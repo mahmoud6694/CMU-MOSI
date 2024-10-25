@@ -26,6 +26,9 @@ if __name__ == "__main__":
     parser.add_argument('--text_context_len', type=int, default=2)
     parser.add_argument('--audio_context_len', type=int, default=1)
     args = parser.parse_args()
+    print("Parsed arguments:")
+    for arg, value in vars(args).items():
+     print(f"{arg}: {value}")
     main(args)
 
 

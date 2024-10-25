@@ -208,6 +208,10 @@ class EnTrainer():
 
 
 def EnRun(config):
+    print("Parsed in EnRun arguments:")
+    for arg, value in vars(config).items():
+      print(f"{arg}: {value}")
+      
     random.seed(config.seed)
     torch.manual_seed(config.seed)
     torch.cuda.manual_seed(config.seed)
@@ -234,6 +238,8 @@ def EnRun(config):
             param.requires_grad = False
 
     trainer = EnTrainer(config)
+    # Assuming train_loader is your DataLoader
+    print(f"\n\nBatch size of TRAIN LOADER: {train_loader.batch_size}")
 
     lowest_eval_loss = 100
     highest_eval_acc = 0
