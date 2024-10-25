@@ -38,7 +38,7 @@ class EnConfig(object):
                  seed = 0,
                  dropout=0.3,
                  model='cc',
-                 batch_size = 16,
+                 batch_size = 1,
                  multi_task = True,
                  model_size = 'small',
                  cme_version = 'v1',
