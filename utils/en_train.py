@@ -86,7 +86,7 @@ class EnTrainer():
         total_loss = 0
         # Loop over all batches.         
         for batch in tqdm(data_loader): 
-            print(f"\n\n\nBatchSIZE: {self.batch_size}\n\n\n")                   
+            print(f"\n\n\nBatchSIZE: {self.config.batch_size}\n\n\n")                   
             text_inputs = batch["text_tokens"].to(device)
             text_mask = batch["text_masks"].to(device)
             text_context_inputs = batch["text_context_tokens"].to(device)
