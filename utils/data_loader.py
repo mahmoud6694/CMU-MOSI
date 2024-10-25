@@ -9,6 +9,7 @@ import pandas as pd
 import numpy as np
 import string
 
+root = '/kaggle/working/MMML'
 
 class Dataset_sims(torch.utils.data.Dataset):
     # Argument List
@@ -243,8 +244,8 @@ def collate_fn_sims(batch):
 
 def data_loader(batch_size, dataset, text_context_length=2, audio_context_length=1):
     if dataset == 'mosi':
-        csv_path = 'data/MOSI/label.csv'
-        audio_file_path = "data/MOSI/wav"
+        csv_path = f'{root}/data/MOSI/label.csv'
+        audio_file_path = f"{root}/data/MOSI/wav"
         train_data = Dataset_mosi(csv_path, audio_file_path, 'train', text_context_length=text_context_length, audio_context_length=audio_context_length)
         test_data = Dataset_mosi(csv_path, audio_file_path, 'test', text_context_length=text_context_length, audio_context_length=audio_context_length)
         val_data = Dataset_mosi(csv_path, audio_file_path, 'valid', text_context_length=text_context_length, audio_context_length=audio_context_length)
@@ -254,8 +255,8 @@ def data_loader(batch_size, dataset, text_context_length=2, audio_context_length
         val_loader = DataLoader(val_data, batch_size=batch_size, shuffle=False)
         return train_loader, test_loader, val_loader
     elif dataset == 'mosei':
-        csv_path = 'data/MOSEI/label.csv'
-        audio_file_path = "data/MOSEI/wav"
+        csv_path = f'{root}/data/MOSEI/label.csv'
+        audio_file_path = f"{root}/data/MOSEI/wav"
         train_data = Dataset_mosi(csv_path, audio_file_path, 'train', text_context_length=text_context_length, audio_context_length=audio_context_length)
         test_data = Dataset_mosi(csv_path, audio_file_path, 'test', text_context_length=text_context_length, audio_context_length=audio_context_length)
         val_data = Dataset_mosi(csv_path, audio_file_path, 'valid', text_context_length=text_context_length, audio_context_length=audio_context_length)
@@ -265,8 +266,8 @@ def data_loader(batch_size, dataset, text_context_length=2, audio_context_length
         val_loader = DataLoader(val_data, batch_size=batch_size, shuffle=False)
         return train_loader, test_loader, val_loader
     else:
-        csv_path = 'data/SIMS/label.csv'
-        audio_file_path = "data/SIMS/wav"
+        csv_path = f'{root}/data/SIMS/label.csv'
+        audio_file_path = f"{root}/data/SIMS/wav"
         train_data = Dataset_sims(csv_path, audio_file_path, 'train')
         test_data = Dataset_sims(csv_path, audio_file_path, 'test')
         val_data = Dataset_sims(csv_path, audio_file_path, 'valid')

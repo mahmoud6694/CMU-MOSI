@@ -7,6 +7,7 @@ from utils.metricsTop import MetricsTop
 import random
 import numpy as np
 
+root = '/kaggle/working/MMML'
 # global variable
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -21,7 +22,7 @@ class modelConfig(object):
     """
     def __init__(self,
                 train_mode = 'regression',
-                 model_save_path = 'checkpoint/',
+                 model_save_path = f'{root}/checkpoint/',
                  learning_rate = 1e-4,
                  dataset_name = 'sims',
                  seed = 111,

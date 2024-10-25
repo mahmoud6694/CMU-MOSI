@@ -8,7 +8,7 @@ import random
 import numpy as np
 from utils.data_loader import data_loader
 from itertools import chain
-
+root = '/kaggle/working/MMML'
 # global variable
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -30,7 +30,7 @@ class EnConfig(object):
                     'T':1,
                     'A':1,
                 },
-                 model_save_path = 'checkpoint/',
+                 model_save_path = f'{root}/checkpoint/',
                  learning_rate = 1e-5,
                  epochs = 20,
                  dataset_name = 'mosei',

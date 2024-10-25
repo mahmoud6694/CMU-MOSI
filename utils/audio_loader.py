@@ -18,7 +18,7 @@ HOP_Length = 320 #320/16000 = 0.02
 MAX_DUR = 6000
 #openSMILE
 MAX_FEA_LEN = 300 #6000ms
-
+root = '/kaggle/working/MMML'
 
 
 # AudioUtil class adapted from https://towardsdatascience.com/audio-deep-learning-made-simple-sound-classification-step-by-step-cebc936bbe5
@@ -102,11 +102,11 @@ def stanParameters(dataset, cv):
     # ----------------------------
     
     if dataset == 'sims':
-        csv_path = 'data/SIMS/label.csv'
-        audio_directory = "data/SIMS/wav"
+        csv_path = f'{root}/data/SIMS/label.csv'
+        audio_directory = f"{root}/data/SIMS/wav"
     elif dataset == "mosi":
-        csv_path = 'data/MOSI/label.csv'
-        audio_directory = "data/MOSI/WAV_16000/Segmented"
+        csv_path = f'{root}/data/MOSI/label.csv'
+        audio_directory = f"{root}/data/MOSI/WAV_16000/Segmented"
         
     # open csv file    
     df = pd.read_csv(csv_path)
@@ -201,11 +201,11 @@ class AudioDataset(torch.utils.data.Dataset):
         self.feature = feature
         
         if dataset == 'sims':
-            csv_path = 'data/SIMS/label.csv'
-            audio_directory = "data/SIMS/wav"
+            csv_path = f'{root}/data/SIMS/label.csv'
+            audio_directory = f"{root}/data/SIMS/wav"
         elif dataset == "mosi":
-            csv_path = 'data/MOSI/label.csv'
-            audio_directory = "data/MOSI/wav"
+            csv_path = f'{root}/data/MOSI/label.csv'
+            audio_directory = f"{root}/data/MOSI/wav"
             
         # open csv file    
         df = pd.read_csv(csv_path)
@@ -253,9 +253,9 @@ class AudioDataset(torch.utils.data.Dataset):
                 with open('data/SIMS/simsOpenVar.npy', 'rb') as f:
                     self.var = np.load(f)
             else:
-                with open('data/MOSI/mosiOpenMean.npy', 'rb') as f:
+                with open(f'{root}/data/MOSI/mosiOpenMean.npy', 'rb') as f:
                     self.mean = np.load(f)
-                with open('data/MOSI/mosiOpenVar.npy', 'rb') as f:
+                with open(f'{root}/data/MOSI/mosiOpenVar.npy', 'rb') as f:
                     self.var = np.load(f) 
         elif feature == 'spec':
             if dataset == 'mosi': # calculate using the stanParameters() function

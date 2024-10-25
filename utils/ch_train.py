@@ -7,7 +7,7 @@ from utils.ch_model import rob_hub_cc, rob_hub_cme
 import random
 import numpy as np
 from utils.data_loader import data_loader
-
+root = '/kaggle/working/MMML'
 # global variable
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -30,7 +30,7 @@ class ChConfig(object):
                     'V':1,
 
                 },
-                 model_save_path = 'checkpoint/',
+                 model_save_path = f'{root}/checkpoint/',
                  learning_rate = 1e-5, 
                  epochs = 20,
                  dataset_name = 'sims',
